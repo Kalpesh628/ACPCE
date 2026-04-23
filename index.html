@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AutoCAD Isometric Drawings — Download Center</title>
+  <meta name="description" content="Download AutoCAD isometric DWG files. One-click download for each isometric drawing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Reset & Base ─── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-primary: #0a0e1a;
+      --bg-card: rgba(255, 255, 255, 0.04);
+      --bg-card-hover: rgba(255, 255, 255, 0.07);
+      --text-primary: #e8ecf4;
+      --text-secondary: #8b93a7;
+      --accent-1: #6c5ce7;
+      --accent-2: #00cec9;
+      --accent-gradient: linear-gradient(135deg, #6c5ce7, #00cec9);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --radius: 16px;
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ─── Animated Background ─── */
+    .bg-glow {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .bg-glow .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.25;
+      animation: float 12s ease-in-out infinite alternate;
+    }
+    .bg-glow .orb:nth-child(1) {
+      width: 500px; height: 500px;
+      background: var(--accent-1);
+      top: -10%; left: -8%;
+      animation-delay: 0s;
+    }
+    .bg-glow .orb:nth-child(2) {
+      width: 400px; height: 400px;
+      background: var(--accent-2);
+      bottom: -12%; right: -6%;
+      animation-delay: -4s;
+    }
+    .bg-glow .orb:nth-child(3) {
+      width: 300px; height: 300px;
+      background: #fd79a8;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      animation-delay: -8s;
+      opacity: 0.12;
+    }
+
+    @keyframes float {
+      0%   { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(40px, -30px) scale(1.12); }
+    }
+
+    /* ─── Container ─── */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    /* ─── Header ─── */
+    .header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .header .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(108, 92, 231, 0.15);
+      border: 1px solid rgba(108, 92, 231, 0.3);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #a29bfe;
+      margin-bottom: 20px;
+      animation: fadeDown 0.6s ease-out;
+    }
+    .badge svg {
+      width: 14px; height: 14px;
+    }
+
+    .header h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 14px;
+      animation: fadeDown 0.6s ease-out 0.1s both;
+    }
+    .header p {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
+      animation: fadeDown 0.6s ease-out 0.2s both;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── File Cards Grid ─── */
+    .cards {
+      display: grid;
+      gap: 20px;
+    }
+
+    .card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 24px 28px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: background 0.3s, border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      animation: fadeUp 0.5s ease-out both;
+    }
+    .card:nth-child(1) { animation-delay: 0.15s; }
+    .card:nth-child(2) { animation-delay: 0.25s; }
+    .card:nth-child(3) { animation-delay: 0.35s; }
+    .card:nth-child(4) { animation-delay: 0.45s; }
+
+    .card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(108, 92, 231, 0.3);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow), 0 0 0 1px rgba(108, 92, 231, 0.15);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── Card Number Badge ─── */
+    .card-number {
+      flex-shrink: 0;
+      width: 52px; height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      background: var(--accent-gradient);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(108, 92, 231, 0.35);
+    }
+
+    /* ─── Card Info ─── */
+    .card-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .card-info h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--text-primary);
+    }
+    .card-info span {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    /* ─── Download Button ─── */
+    .btn-download {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border: none;
+      border-radius: 12px;
+      background: var(--accent-gradient);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+      box-shadow: 0 4px 16px rgba(108, 92, 231, 0.3);
+    }
+    .btn-download:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 24px rgba(108, 92, 231, 0.45);
+    }
+    .btn-download:active {
+      transform: scale(0.97);
+    }
+    .btn-download svg {
+      width: 16px; height: 16px;
+    }
+
+    /* ─── Download-all bar ─── */
+    .download-all-bar {
+      margin-top: 36px;
+      text-align: center;
+      animation: fadeUp 0.5s ease-out 0.55s both;
+    }
+    .btn-all {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      border: 2px solid transparent;
+      border-radius: 14px;
+      background: linear-gradient(var(--bg-primary), var(--bg-primary)) padding-box,
+                  var(--accent-gradient) border-box;
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    }
+    .btn-all:hover {
+      background: var(--accent-gradient);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(108, 92, 231, 0.4);
+    }
+    .btn-all svg {
+      width: 18px; height: 18px;
+    }
+
+    /* ─── Toast Notification ─── */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: rgba(0, 206, 201, 0.15);
+      border: 1px solid rgba(0, 206, 201, 0.4);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      color: #55efc4;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      pointer-events: none;
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s;
+      z-index: 100;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 600px) {
+      .card {
+        flex-direction: column;
+        text-align: center;
+        gap: 14px;
+        padding: 22px 20px;
+      }
+      .card-info { text-align: center; }
+      .btn-download { width: 100%; justify-content: center; }
+    }
+
+    /* ─── Footer ─── */
+    .footer {
+      text-align: center;
+      margin-top: 64px;
+      color: var(--text-secondary);
+      font-size: 0.78rem;
+      opacity: 0.6;
+      animation: fadeUp 0.5s ease-out 0.65s both;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Animated Background Orbs -->
+  <div class="bg-glow">
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+  </div>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+        AutoCAD Files
+      </div>
+      <h1>Isometric Drawings</h1>
+      <p>Download each AutoCAD isometric DWG file with a single click.</p>
+    </header>
+
+    <!-- File Cards -->
+    <div class="cards" id="cards">
+
+      <!-- Card 1 -->
+      <div class="card" id="card-1">
+        <div class="card-number">1</div>
+        <div class="card-info">
+          <h3>Isometric 1</h3>
+          <span>Isometric1.dwg — 34.6 KB</span>
+        </div>
+        <a class="btn-download" href="Isometric1.dwg" download="Isometric1.dwg" id="btn-download-1" onclick="showToast('Downloading Isometric1.dwg…')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+        </a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card" id="card-2">
+        <div class="card-number">2</div>
+        <div class="card-info">
+          <h3>Isometric 2</h3>
+          <span>isometric2.dwg — 33.1 KB</span>
+        </div>
+        <a class="btn-download" href="isometric2.dwg" download="isometric2.dwg" id="btn-download-2" onclick="showToast('Downloading isometric2.dwg…')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+        </a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card" id="card-3">
+        <div class="card-number">3</div>
+        <div class="card-info">
+          <h3>Isometric 3</h3>
+          <span>isometric3.dwg — 33.4 KB</span>
+        </div>
+        <a class="btn-download" href="isometric3.dwg" download="isometric3.dwg" id="btn-download-3" onclick="showToast('Downloading isometric3.dwg…')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+        </a>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card" id="card-4">
+        <div class="card-number">4</div>
+        <div class="card-info">
+          <h3>Isometric 4</h3>
+          <span>isometric4 (1).dwg — 33.5 KB</span>
+        </div>
+        <a class="btn-download" href="isometric4 (1).dwg" download="isometric4 (1).dwg" id="btn-download-4" onclick="showToast('Downloading isometric4 (1).dwg…')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Download All -->
+    <div class="download-all-bar">
+      <button class="btn-all" id="btn-download-all" onclick="downloadAll()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download All Files
+      </button>
+    </div>
+
+    <p class="footer">AutoCAD Isometric Drawings &bull; DWG Format</p>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // ── Toast notification ──
+    let toastTimeout;
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => t.classList.remove('show'), 2400);
+    }
+
+    // ── Download all files sequentially ──
+    function downloadAll() {
+      const files = [
+        'Isometric1.dwg',
+        'isometric2.dwg',
+        'isometric3.dwg',
+        'isometric4 (1).dwg'
+      ];
+      files.forEach((file, i) => {
+        setTimeout(() => {
+          const a = document.createElement('a');
+          a.href = file;
+          a.download = file;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        }, i * 500);          // stagger to avoid browser blocking
+      });
+      showToast('Downloading all 4 files…');
+    }
+  </script>
+
+</body>
+</html>
