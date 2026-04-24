@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AutoCAD Isometric Drawings — Download Center</title>
-  <meta name="description" content="Download AutoCAD isometric DWG files. One-click download for each isometric drawing." />
+  <title>AutoCAD Isometric & Ortho Drawings — Download Center</title>
+  <meta name="description" content="Download AutoCAD isometric and orthographic DWG files. One-click download for each drawing." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -158,6 +158,7 @@
     .card:nth-child(2) { animation-delay: 0.25s; }
     .card:nth-child(3) { animation-delay: 0.35s; }
     .card:nth-child(4) { animation-delay: 0.45s; }
+    .card:nth-child(5) { animation-delay: 0.55s; }
 
     .card:hover {
       background: var(--bg-card-hover);
@@ -328,8 +329,8 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
         AutoCAD Files
       </div>
-      <h1>Isometric Drawings</h1>
-      <p>Download each AutoCAD isometric DWG file with a single click.</p>
+      <h1>Isometric & Ortho Drawings</h1>
+      <p>Download each AutoCAD isometric and orthographic DWG file with a single click.</p>
     </header>
 
     <!-- File Cards -->
@@ -387,6 +388,20 @@
         </a>
       </div>
 
+      <!-- Card 5 — Ortho -->
+      <div class="card" id="card-5">
+        <div class="card-number" style="background: linear-gradient(135deg, #e17055, #fdcb6e);
+          box-shadow: 0 4px 16px rgba(225, 112, 85, 0.35);">O</div>
+        <div class="card-info">
+          <h3>Set 2 — Ortho</h3>
+          <span>set2ortho.dwg — 36.0 KB</span>
+        </div>
+        <a class="btn-download" href="set2ortho.dwg" download="set2ortho.dwg" id="btn-download-5" onclick="showToast('Downloading set2ortho.dwg…')" style="background: linear-gradient(135deg, #e17055, #fdcb6e);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+        </a>
+      </div>
+
     </div>
 
     <!-- Download All -->
@@ -397,7 +412,7 @@
       </button>
     </div>
 
-    <p class="footer">AutoCAD Isometric Drawings &bull; DWG Format</p>
+    <p class="footer">AutoCAD Isometric & Ortho Drawings &bull; DWG Format</p>
   </div>
 
   <!-- Toast -->
@@ -420,7 +435,8 @@
         'Isometric1.dwg',
         'isometric2.dwg',
         'isometric3.dwg',
-        'isometric4 (1).dwg'
+        'isometric4 (1).dwg',
+        'set2ortho.dwg'
       ];
       files.forEach((file, i) => {
         setTimeout(() => {
@@ -432,7 +448,7 @@
           document.body.removeChild(a);
         }, i * 500);          // stagger to avoid browser blocking
       });
-      showToast('Downloading all 4 files…');
+      showToast('Downloading all 5 files…');
     }
   </script>
 
